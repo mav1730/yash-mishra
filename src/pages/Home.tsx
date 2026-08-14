@@ -233,7 +233,7 @@ export function Home() {
             href={p.fake ? '/work' : p.href}
             target={p.fake || p.href.startsWith('/') ? undefined : '_blank'}
             rel={p.fake || p.href.startsWith('/') ? undefined : 'noreferrer'}
-            data-cursor={p.fake ? 'Soon' : 'Repo'}
+            data-cursor={p.fake ? 'Soon' : p.href.includes('vercel.app') ? 'Live' : 'Repo'}
             onClick={(e) => {
               if (p.fake || p.href.startsWith('/')) {
                 e.preventDefault()

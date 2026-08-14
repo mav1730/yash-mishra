@@ -26,8 +26,23 @@ export const nav = [
 
 export const projects = [
   {
-    id: 'legal',
+    id: 'chalutha',
     index: '01',
+    title: 'CHALU THA',
+    status: 'Live',
+    year: '2026',
+    role: 'Playground · radio',
+    image: '/images/chalutha.jpg',
+    href: 'https://chalutha.vercel.app',
+    blurb:
+      'A 2000s Indian gali of ten shop radios. Invite a friend. You both lock to the same bar of the same song.',
+    body: 'Ambient radio as a place, not a playlist. Ten rooms, a shared clock, a private booth. Audio rides official YouTube embeds. Click opens the live Vercel build.',
+    stack: ['HTML', 'CSS', 'Vanilla JS', 'YouTube IFrame', 'Vercel'],
+    fake: false,
+  },
+  {
+    id: 'legal',
+    index: '02',
     title: 'Legal Metrology Checker',
     status: 'Shipped',
     year: '2026',
@@ -42,7 +57,7 @@ export const projects = [
   },
   {
     id: 'codebench',
-    index: '02',
+    index: '03',
     title: 'CodeBench Agent',
     status: 'In build',
     year: '2026',
@@ -57,7 +72,7 @@ export const projects = [
   },
   {
     id: 'judge',
-    index: '03',
+    index: '04',
     title: 'AgentJudge + Router',
     status: 'In build',
     year: '2026',
@@ -190,8 +205,17 @@ export const aiQuotes = [
 
 export const playground = [
   {
-    id: 'beacon',
+    id: 'chalutha',
     n: '01',
+    title: 'CHALU THA',
+    tag: 'Live radio',
+    href: 'https://chalutha.vercel.app',
+    note: 'A 2000s Indian gali of shared radios. Walk in with a friend. You both hear the same second.',
+    img: '/images/chalutha.jpg',
+  },
+  {
+    id: 'beacon',
+    n: '02',
     title: 'BeaconOps',
     tag: 'Live print',
     href: 'https://github.com/mav1730/beaconops',
@@ -200,7 +224,7 @@ export const playground = [
   },
   {
     id: 'cursor',
-    n: '02',
+    n: '03',
     title: 'Ink cursor',
     tag: 'Study',
     href: '/playground',
@@ -209,7 +233,7 @@ export const playground = [
   },
   {
     id: 'grain',
-    n: '03',
+    n: '04',
     title: 'Press grain',
     tag: 'Study',
     href: '/playground',
@@ -218,7 +242,7 @@ export const playground = [
   },
   {
     id: 'receipts',
-    n: '04',
+    n: '05',
     title: 'Receipts',
     tag: 'Plate',
     href: '/manifesto',

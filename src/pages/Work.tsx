@@ -8,7 +8,7 @@ export function Work() {
   usePageReveal(booted)
   return (
     <main className="page">
-      <p className="page-kicker mono">Archive · 03 entries</p>
+      <p className="page-kicker mono">Archive · 04 entries</p>
       <h1 className="page-title">Work</h1>
       {projects.map((p) => (
         <article className="case" key={p.id} id={p.id}>
@@ -29,7 +29,7 @@ export function Work() {
             </div>
             {!p.fake ? (
               <a className="link-out" href={p.href} target="_blank" rel="noreferrer">
-                Open repository →
+                {p.href.includes('vercel.app') ? 'Open live site →' : 'Open repository →'}
               </a>
             ) : (
               <p className="link-out" style={{ cursor: 'default' }}>
