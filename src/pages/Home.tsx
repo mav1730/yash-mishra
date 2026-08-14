@@ -71,12 +71,46 @@ export function Home() {
         },
       })
 
-      gsap.from('.intro p', {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        scrollTrigger: { trigger: '.intro', start: 'top 80%' },
-      })
+      gsap.fromTo(
+        '.intro-copy p',
+        { y: 40, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.05,
+          ease: 'power3.out',
+          immediateRender: false,
+          scrollTrigger: { trigger: '.intro', start: 'top 82%', once: true },
+        },
+      )
+      gsap.fromTo(
+        '.intro-still',
+        { y: 56, opacity: 0, clipPath: 'inset(10% 10% 10% 10%)' },
+        {
+          y: 0,
+          opacity: 1,
+          clipPath: 'inset(0% 0% 0% 0%)',
+          duration: 1.2,
+          ease: 'power3.out',
+          immediateRender: false,
+          scrollTrigger: { trigger: '.intro', start: 'top 84%', once: true },
+        },
+      )
+      gsap.fromTo(
+        '.intro-still img',
+        { scale: 1.16, yPercent: -6 },
+        {
+          scale: 1,
+          yPercent: 8,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.intro',
+            start: 'top 90%',
+            end: 'bottom top',
+            scrub: true,
+          },
+        },
+      )
 
       gsap.utils.toArray<HTMLElement>('.work-row').forEach((row) => {
         gsap.fromTo(
@@ -152,11 +186,18 @@ export function Home() {
       </section>
 
       <section className="intro">
-        <p>
-          I build tool-using LLM systems you can evaluate, recover after failure,
-          observe in production, and improve with data —{' '}
-          <em>not chatbots with a fancy UI.</em>
-        </p>
+        <div className="intro-duo">
+          <div className="intro-copy">
+            <p>
+              I build tool-using LLM systems you can evaluate, recover after failure,
+              observe in production, and improve with data —{' '}
+              <em>not chatbots with a fancy UI.</em>
+            </p>
+          </div>
+          <figure className="intro-still">
+            <img src="/images/highlight1.jpg" alt="Yash Mishra" />
+          </figure>
+        </div>
       </section>
 
       <section className="section" id="selected">
