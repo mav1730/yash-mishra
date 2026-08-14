@@ -9,6 +9,7 @@ import {
 } from 'react'
 import { useNavigate } from 'react-router-dom'
 import gsap from 'gsap'
+import { getLenis } from '../lib/useLenis'
 
 type TransitionApi = {
   to: (path: string, label: string) => void
@@ -154,11 +155,13 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
     (path: string, nextLabel: string) => {
       if (running.current || !booted) return
       if (window.location.pathname === path) {
+        getLenis()?.scrollTo(0, { immediate: true })
         window.scrollTo(0, 0)
         return
       }
       playCycle(nextLabel, () => {
         navigate(path)
+        getLenis()?.scrollTo(0, { immediate: true })
         window.scrollTo(0, 0)
       })
     },

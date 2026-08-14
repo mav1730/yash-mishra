@@ -42,6 +42,8 @@ export function Playground() {
             key={item.id}
             className="play-card"
             href={item.href}
+            target={item.href.startsWith('/') ? undefined : '_blank'}
+            rel={item.href.startsWith('/') ? undefined : 'noreferrer'}
             data-cursor={item.tag}
             onMouseMove={(e) => move(e, item.img)}
             onMouseLeave={() => setFollow((f) => ({ ...f, on: false }))}

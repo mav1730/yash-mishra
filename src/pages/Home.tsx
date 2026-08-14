@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { profile, projects } from '../data/content'
 import { useTransitionNav } from '../context/Transition'
+import { getLenis } from '../lib/useLenis'
 import { LicenseCard } from '../components/LicenseCard'
 import { SiteFoot } from '../components/SiteFoot'
 
@@ -18,7 +19,11 @@ export function Home() {
       window.location.hash.replace('#', '')
     if (!id) return
     const t = window.setTimeout(() => {
-      document.getElementById(id)?.scrollIntoView({ behavior: 'auto', block: 'start' })
+      const el = document.getElementById(id)
+      if (!el) return
+      const lenis = getLenis()
+      if (lenis) lenis.scrollTo(el, { immediate: true })
+      else el.scrollIntoView({ behavior: 'auto', block: 'start' })
     }, 160)
     return () => window.clearTimeout(t)
   }, [])
@@ -26,19 +31,16 @@ export function Home() {
   useLayoutEffect(() => {
     if (!booted || !root.current) return
     const ctx = gsap.context(() => {
-      gsap.from('.hero-name', {
-        y: 48,
-        duration: 1.15,
-        stagger: 0.08,
-        ease: 'power3.out',
-      })
-      gsap.from('.hero-photo-wrap, .hero-sub span', {
-        y: 36,
-        opacity: 0,
-        duration: 1.15,
-        stagger: 0.08,
-        ease: 'power3.out',
-      })
+      gsap.fromTo(
+        '.hero-name',
+        { y: 48 },
+        { y: 0, duration: 1.15, stagger: 0.08, ease: 'power3.out' },
+      )
+      gsap.fromTo(
+        '.hero-photo-wrap, .hero-sub span',
+        { y: 36, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1.15, stagger: 0.08, ease: 'power3.out' },
+      )
 
       gsap.to('.hero-photo', {
         yPercent: 12,
@@ -145,20 +147,30 @@ export function Home() {
         }
       })
 
-      gsap.from('.quote-band blockquote', {
-        y: 30,
-        opacity: 0,
-        duration: 1,
-        scrollTrigger: { trigger: '.quote-band', start: 'top 75%' },
-      })
+      gsap.fromTo(
+        '.quote-band blockquote',
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          immediateRender: false,
+          scrollTrigger: { trigger: '.quote-band', start: 'top 75%', once: true },
+        },
+      )
 
-      gsap.from('.license', {
-        y: 60,
-        opacity: 0,
-        duration: 1.1,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: '.closer', start: 'top 70%' },
-      })
+      gsap.fromTo(
+        '.license',
+        { y: 60, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.1,
+          ease: 'power3.out',
+          immediateRender: false,
+          scrollTrigger: { trigger: '.closer', start: 'top 70%', once: true },
+        },
+      )
     }, root)
     return () => ctx.revert()
   }, [booted])
@@ -219,6 +231,8 @@ export function Home() {
             key={p.id}
             className="work-row"
             href={p.fake ? '/work' : p.href}
+            target={p.fake || p.href.startsWith('/') ? undefined : '_blank'}
+            rel={p.fake || p.href.startsWith('/') ? undefined : 'noreferrer'}
             data-cursor={p.fake ? 'Soon' : 'Repo'}
             onClick={(e) => {
               if (p.fake || p.href.startsWith('/')) {

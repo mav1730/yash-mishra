@@ -84,11 +84,16 @@ export function StuffTrail() {
 
     const onMove = (e: MouseEvent) => {
       if (coarse) return
+      if (document.body.classList.contains('modal-open')) return
+      if (document.body.classList.contains('wiping')) return
+      const hit = e.target instanceof Element ? e.target.closest('.nav, .contact-back, .mobile-panel') : null
+      if (hit) return
       const r = box()
       const x = e.clientX - r.left
       const y = e.clientY - r.top
       mouse.current = { x, y }
       if (x < 0 || y < 0 || x > r.width || y > r.height) return
+      if (y < 72) return
       if (Math.hypot(x - last.current.x, y - last.current.y) < THRESHOLD) return
       drop(x, y)
       last.current = { x, y }

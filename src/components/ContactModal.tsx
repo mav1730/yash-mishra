@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { profile } from '../data/content'
+import { getLenis } from '../lib/useLenis'
 
 export function ContactModal({
   open,
@@ -14,9 +15,11 @@ export function ContactModal({
       if (e.key === 'Escape') onClose()
     }
     document.body.classList.add('modal-open')
+    getLenis()?.stop()
     window.addEventListener('keydown', onKey)
     return () => {
       document.body.classList.remove('modal-open')
+      getLenis()?.start()
       window.removeEventListener('keydown', onKey)
     }
   }, [open, onClose])

@@ -73,7 +73,7 @@ export function Nav() {
           {open ? 'Close' : 'Menu'}
         </button>
       </header>
-      <div className="mobile-panel" aria-hidden={!open}>
+      <div className="mobile-panel" aria-hidden={!open} inert={!open || undefined}>
         <a
           href="/"
           onClick={(e) => {
