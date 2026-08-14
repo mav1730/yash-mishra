@@ -187,6 +187,9 @@ export function Home() {
 
       <section className="intro">
         <div className="intro-duo">
+          <figure className="intro-still">
+            <img src="/images/highlight1.jpg" alt="Yash Mishra" />
+          </figure>
           <div className="intro-copy">
             <p>
               I build tool-using LLM systems you can evaluate, recover after failure,
@@ -194,9 +197,6 @@ export function Home() {
               <em>not chatbots with a fancy UI.</em>
             </p>
           </div>
-          <figure className="intro-still">
-            <img src="/images/highlight1.jpg" alt="Yash Mishra" />
-          </figure>
         </div>
       </section>
 

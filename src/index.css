@@ -360,60 +360,8 @@ button {
   opacity: 1;
 }
 
-.nav-end {
+.nav-talk {
   justify-self: end;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.nav-face {
-  position: relative;
-  width: 38px;
-  height: 38px;
-  padding: 0;
-  flex-shrink: 0;
-}
-
-.nav-face img {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: center 20%;
-  border: 1px solid var(--ink);
-  box-shadow: 0 0 0 0 rgba(196, 23, 29, 0);
-  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s ease;
-}
-
-.nav-face:hover img {
-  transform: scale(1.08);
-  border-color: #c4171d;
-  box-shadow: 0 0 0 4px rgba(196, 23, 29, 0.16);
-}
-
-.nav-face-dot {
-  position: absolute;
-  right: 1px;
-  bottom: 1px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #c4171d;
-  border: 1.5px solid var(--bg);
-  animation: nav-pulse 2.4s ease-in-out infinite;
-}
-
-@keyframes nav-pulse {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.15);
-    opacity: 0.7;
-  }
 }
 
 .nav-clear {
@@ -423,14 +371,6 @@ button {
 
 .nav-clear .nav-menu {
   color: #efe8dc;
-}
-
-.nav-clear .nav-face img {
-  border-color: #efe8dc;
-}
-
-.nav-clear .nav-face-dot {
-  border-color: #111110;
 }
 
 .nav-menu {
@@ -452,28 +392,12 @@ button {
   transform: translateY(-100%);
 }
 
-.mobile-panel a,
-.mobile-talk {
+.mobile-panel a {
   font-family: 'Playfair Display', Georgia, serif;
   font-weight: 500;
   font-size: clamp(40px, 12vw, 72px);
   letter-spacing: -0.05em;
   line-height: 1;
-}
-
-.mobile-talk {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-top: 12px;
-}
-
-.mobile-talk img {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1px solid var(--ink);
 }
 
 /* opening hero — Bill Chien: huge name + p3 portrait */
@@ -704,7 +628,7 @@ button {
 
 .intro-duo {
   display: grid;
-  grid-template-columns: minmax(280px, 1fr) minmax(240px, 0.82fr);
+  grid-template-columns: minmax(240px, 0.82fr) minmax(280px, 1fr);
   gap: clamp(28px, 5vw, 72px);
   align-items: center;
   max-width: 1280px;
@@ -1743,8 +1667,7 @@ button {
   }
 
   .nav {
-    grid-template-columns: 1fr auto auto;
-    gap: 12px;
+    grid-template-columns: 1fr auto;
   }
 
   .work-row,

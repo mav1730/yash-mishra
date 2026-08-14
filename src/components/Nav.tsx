@@ -66,21 +66,9 @@ export function Nav() {
             </a>
           ))}
         </nav>
-        <div className="nav-end">
-          <button className="nav-talk" type="button" data-cursor="Talk" onClick={openTalk}>
-            Talk
-          </button>
-          <button
-            className="nav-face"
-            type="button"
-            data-cursor="Hey"
-            onClick={openTalk}
-            aria-label="Talk to Yash"
-          >
-            <img src="/images/nav-face.jpg" alt="" />
-            <span className="nav-face-dot" />
-          </button>
-        </div>
+        <button className="nav-talk" type="button" data-cursor="Talk" onClick={openTalk}>
+          Talk
+        </button>
         <button className="nav-menu" type="button" onClick={toggle}>
           {open ? 'Close' : 'Menu'}
         </button>
@@ -110,8 +98,7 @@ export function Nav() {
             {item.label}
           </a>
         ))}
-        <button type="button" className="mobile-talk" onClick={openTalk}>
-          <img src="/images/nav-face.jpg" alt="" />
+        <button type="button" onClick={openTalk}>
           Talk
         </button>
       </div>
