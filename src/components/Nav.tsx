@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import gsap from 'gsap'
 import { nav } from '../data/content'
 import { useTransitionNav } from '../context/Transition'
@@ -6,8 +7,10 @@ import { ContactModal } from './ContactModal'
 
 export function Nav() {
   const { to } = useTransitionNav()
+  const { pathname } = useLocation()
   const [open, setOpen] = useState(false)
   const [talk, setTalk] = useState(false)
+  const clear = pathname === '/pinart'
 
   const openTalk = () => {
     setOpen(false)
@@ -33,7 +36,7 @@ export function Nav() {
 
   return (
     <>
-      <header className="nav">
+      <header className={`nav ${clear ? 'nav-clear' : ''}`}>
         <a
           className="nav-brand"
           href="/"
@@ -63,9 +66,21 @@ export function Nav() {
             </a>
           ))}
         </nav>
-        <button className="nav-talk" type="button" data-cursor="Talk" onClick={openTalk}>
-          Talk
-        </button>
+        <div className="nav-end">
+          <button className="nav-talk" type="button" data-cursor="Talk" onClick={openTalk}>
+            Talk
+          </button>
+          <button
+            className="nav-face"
+            type="button"
+            data-cursor="Hey"
+            onClick={openTalk}
+            aria-label="Talk to Yash"
+          >
+            <img src="/images/nav-face.jpg" alt="" />
+            <span className="nav-face-dot" />
+          </button>
+        </div>
         <button className="nav-menu" type="button" onClick={toggle}>
           {open ? 'Close' : 'Menu'}
         </button>
@@ -95,7 +110,8 @@ export function Nav() {
             {item.label}
           </a>
         ))}
-        <button type="button" onClick={openTalk}>
+        <button type="button" className="mobile-talk" onClick={openTalk}>
+          <img src="/images/nav-face.jpg" alt="" />
           Talk
         </button>
       </div>

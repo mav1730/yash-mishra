@@ -24,15 +24,6 @@ const POOL: { src: string; tall: boolean }[] = [
   { src: '/images/judge.jpg', tall: false },
 ]
 
-const SEED = [
-  { x: 0.22, y: 0.42, i: 0 },
-  { x: 0.48, y: 0.28, i: 1 },
-  { x: 0.72, y: 0.38, i: 2 },
-  { x: 0.86, y: 0.62, i: 3 },
-  { x: 0.38, y: 0.68, i: 4 },
-  { x: 0.62, y: 0.78, i: 5 },
-]
-
 export function StuffTrail() {
   const wrap = useRef<HTMLDivElement>(null)
   const svg = useRef<SVGSVGElement>(null)
@@ -83,22 +74,11 @@ export function StuffTrail() {
           return
         }
       }
-      idx.current = (idx.current + 1) % nodes.length
       place(nodes[idx.current], x, y)
+      idx.current = (idx.current + 1) % nodes.length
     }
 
     const box = () => root.getBoundingClientRect()
-
-    const seed = () => {
-      const r = box()
-      SEED.forEach((s) => {
-        const el = nodes[s.i]
-        if (!el) return
-        idx.current = s.i
-        place(el, r.width * s.x, r.height * s.y)
-      })
-    }
-    seed()
 
     const coarse = window.matchMedia('(hover: none)').matches
 
