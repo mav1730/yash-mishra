@@ -3,6 +3,8 @@
 Personal site for **Yash Mishra** (SIES GST, Mumbai).  
 Static single-page app. No backend. No API keys.
 
+**Live:** [yash-mishra-seven.vercel.app](https://yash-mishra-seven.vercel.app/)
+
 Live source: [github.com/mav1730/yash-mishra](https://github.com/mav1730/yash-mishra)
 
 For the full system map — how it was built, why each library is here, and how pages talk to each other — see **[ARCHITECTURE.md](./ARCHITECTURE.md)**.
